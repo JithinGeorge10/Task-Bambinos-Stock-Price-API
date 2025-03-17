@@ -16,12 +16,13 @@ export class StockController implements IStockController {
   stockClosingPrice = async (httpRequest: Request): Promise<ControllerResponse> => {
     try {
       const symbol = httpRequest.query.symbol as string;
-      const date = httpRequest.query.date as string;
+      const dateFromQuery = httpRequest.query.date as string;
   
-      if (!symbol || !date) {
+      if (!symbol || !dateFromQuery) {
         throw new Error("Symbol and date are required.");
       }
-  
+      const date = String(dateFromQuery);  
+
       const price = await this.stockService.getStockPrice({ symbol, date });
   
       return {

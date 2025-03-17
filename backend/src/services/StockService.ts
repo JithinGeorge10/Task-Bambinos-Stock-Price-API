@@ -13,8 +13,10 @@ export class StockService implements IStockService {
 
     getStockPrice = async ({ symbol, date }: { symbol: string; date: string }): Promise<stockDetailsOutput> => {
         try {
-            const stockDetails = await this.stockRepository.getStockPrice(symbol, new Date(date));  // Ensure date is converted to Date object
-            return { price: stockDetails.price };
+            const formattedDate = new Date(date).toISOString().split("T")[0]; 
+
+            const stockDetails = await this.stockRepository.getStockPrice(symbol, formattedDate); 
+            return { closingPrice: stockDetails.closingPrice };
         } catch (error: any) {
             console.log("Error in stock service", error.message);
             throw new Error(error.message);

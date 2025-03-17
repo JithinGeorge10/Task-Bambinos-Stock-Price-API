@@ -4,5 +4,5 @@ export type stockDetailsInput = {
   };
 
   export type stockDetailsOutput = {
-    readonly price: Number|null;
+    readonly closingPrice: Number|null;
   };

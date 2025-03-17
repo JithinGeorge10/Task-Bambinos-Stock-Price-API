@@ -6,5 +6,5 @@ const StockSchema = new mongoose.Schema({
   closing_price: { type: Number, required: true }
 });
 
-const StockModel = mongoose.model("Stock", StockSchema);
+const StockModel = mongoose.model("stockPrice", StockSchema);
 export default StockModel;

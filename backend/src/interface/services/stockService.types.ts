@@ -4,5 +4,5 @@ export type stockDetailsInput = {
   };
 
   export type stockDetailsOutput = {
-     price: Number|null;
+    closingPrice: Number|null;
   };
