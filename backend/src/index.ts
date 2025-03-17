@@ -14,7 +14,7 @@ connectDb();
 app.get('/',(req,res)=>{
     res.send('kkk')
 })
-app.use("/api/stock-price",stockRoutes);
+app.use("/api",stockRoutes);
 
 
 
