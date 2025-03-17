@@ -19,5 +19,5 @@ app.use(cors(corsOptions));
 app.use("/api", stockRoutes);
 
 app.listen(PORT, () => {
-    console.log(`Server started running on port ${PORT}`)
+    console.log(`Server started running on ${PORT}`)
 })
