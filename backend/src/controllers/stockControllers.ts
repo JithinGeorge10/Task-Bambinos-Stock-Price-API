@@ -5,7 +5,7 @@ export const getStockPrice = async (req: Request, res: Response) => {
     const { symbol, date } = req.query as { symbol: string; date: string };
     console.log(symbol)
     console.log(date)
-    
+    res.send('ok')
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
