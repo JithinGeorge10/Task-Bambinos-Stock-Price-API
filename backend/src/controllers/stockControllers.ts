@@ -17,14 +17,8 @@ export class StockController implements IStockController {
     try {
       const symbol = httpRequest.query.symbol as string;
       const dateFromQuery = httpRequest.query.date as string;
-  
-      if (!symbol || !dateFromQuery) {
-        throw new Error("Symbol and date are required.");
-      }
       const date = String(dateFromQuery);  
-
       const price = await this.stockService.getStockPrice({ symbol, date });
-  
       return {
         headers: {
           "Content-Type": "application/json",
