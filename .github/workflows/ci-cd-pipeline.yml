@@ -28,7 +28,7 @@ jobs:
       with:
         context: .  
         push: true
-        tags: jithingeorge10/stock-api:1
+        tags: jithingeorge10/stock-api
 
     - name: Log out from Docker Hub
       run: docker logout
