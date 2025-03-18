@@ -5,6 +5,7 @@ import { connectDb } from "./config/database";
 import stockRoutes from "./routes/stockRoutes";
 import cors from "cors";
 
+
 const app = express();
 
 app.use(morgan("dev"));
@@ -17,6 +18,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use("/api", stockRoutes);
+
 
 app.listen(PORT, () => {
     console.log(`Server started running on port ${PORT}`)
