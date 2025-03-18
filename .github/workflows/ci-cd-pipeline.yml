@@ -26,7 +26,7 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v3
       with:
-        context: .  
+        context: ./backend  
         push: true
         tags: jithingeorge10/stock-api
 
