@@ -4,8 +4,11 @@ const process = require('process');
 const { authenticate } = require('@google-cloud/local-auth');
 const { google } = require('googleapis');
 const mongoose = require('mongoose');
+const dotenv =require('dotenv')
+dotenv.config();
 
-mongoose.connect('mongodb+srv://Jithin:jithin@cluster0.sjnsmvz.mongodb.net/stock_price', {
+
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -122,16 +125,6 @@ async function listMajors(auth) {
         console.warn("No valid data to insert.");
     }
 
-    //   const rows = res.data.values;
-    //   if (!rows || rows.length === 0) {
-    //     console.log('No data found.');
-    //     return;
-    //   }
-    //   console.log('Name, Major:');
-    //   rows.forEach((row) => {
-    //     // Print columns A and E, which correspond to indices 0 and 4.
-    //     console.log(`${row[0]}, ${row[4]}`);
-    //   });
 }
 
 authorize().then(listMajors).catch(console.error);
