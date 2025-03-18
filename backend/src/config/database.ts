@@ -9,3 +9,5 @@ export async function connectDb (): Promise<void> {
     console.error("MongoDB connection error:", error);
   }
 }
+
+//test
