@@ -17,7 +17,7 @@ const stockSchema = new mongoose.Schema({
     closing_price: Number
 });
 
-const Stock = mongoose.model('stock_details', stockSchema);
+const Stock = mongoose.model('stockPrice', stockSchema);
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
@@ -95,18 +95,17 @@ async function listMajors(auth) {
 
     fs.writeFile('response.json', JSON.stringify(res.data.values))
     const rows = res.data.values;
-    const headers = rows[0].slice(1); // Remove 'Date' and keep stock symbols
+    const headers = rows[0].slice(1);
     const formattedData = [];
 
     for (let i = 1; i < rows.length; i++) {
-        const date = rows[i][0]; // Get the date
+        const date = rows[i][0];
         for (let j = 1; j < rows[i].length; j++) {
             const closingPrice = parseFloat(rows[i][j]);
 
-            // Ensure closing_price is a valid number before inserting
             if (!isNaN(closingPrice)) {
                 formattedData.push({
-                    symbol: headers[j - 1].replace("NSE:", ""), // Remove 'NSE:' prefix
+                    symbol: headers[j - 1].replace("NSE:", ""),
                     date: date,
                     closing_price: closingPrice
                 });
